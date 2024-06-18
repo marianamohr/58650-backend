@@ -49,6 +49,7 @@ class TicketManager {
       // console.log("Evento nao encontrado");
       return false;
     }
+
     const newEvent = {
       ...this.#events[index],
       id: this.#id,
@@ -63,10 +64,12 @@ class TicketManager {
 
 const manager = new TicketManager();
 
-manager.addEvent("Rock in Rio", "SP", 10, 50, "10/10");
-manager.addEvent("Festa2", "SC", 10, 50);
+manager.addEvent("Rock in Rio", "Lisboa", 10, 50, "10/10");  // id = 1 index: 0
+manager.addEvent("Festa2", "SC", 10, 50);  // id = 2 index = 1
 console.log("Antes", manager.getEvents());
 manager.addUser(1, 5);
 manager.addUser(1, 4);
-manager.putEventoEnGira(1, "Lisboa")
+manager.addUser(1, 4);
+manager.addUser(2, 4);
+manager.putEventoEnGira(1, "RJ", "10/12")
 console.log("Depois", manager.getEvents());

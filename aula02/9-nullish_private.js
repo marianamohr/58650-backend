@@ -14,11 +14,11 @@ class Persona {
     this.nome = nome;
     this.sobrenome = sobrenome;
     this.#fullname = `${this.nome} ${this.sobrenome}`;
-    this.idade = this.#calculaIdade
+   //  this.idade = this.#calculaIdade
   }
-  getFullName = () => this.#fullname;
+  getFßullName = () => this.#fullname;
   #metodoPrivado = () => null;
-  #calculaIdade = () => calcular a idade
+ //  #calculaIdade = () => calcular a idade
   
 }
 
