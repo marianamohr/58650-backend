@@ -33,15 +33,12 @@ const multiplicacao = (num1, num2) => {
     }
     const mult = num1 * num2;
     if (mult < 0) {
-      reject("deve retornar somente resultados positovos");
+      reject("deve retornar somente resultados positivos");
     } else {
       resolve(mult);
     }
   });
 };
-
-
-
 
 const divisao = (num1, num2) => {
     return new Promise((resolve, reject) => {

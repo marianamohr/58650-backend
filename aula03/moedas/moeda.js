@@ -6,6 +6,7 @@ const fetch = async (de, para) => {
   try {
     const baseURL = "https://economia.awesomeapi.com.br/last/";
     const url = `${baseURL}${de}-${para}`;
+    console.log(url)
     const { data } = await axios.get(url);
     return data;
   } catch (err) {
@@ -15,9 +16,10 @@ const fetch = async (de, para) => {
 
 const main = async () => {
   try {
-    const resposta = await fetch("USD", "BRL");
+    const resposta =  await fetch("USD", "BRL");
     console.log(resposta)
-    const dolar = +resposta.USDBRL.high;
+    //const dolar = +resposta.USDBRL.high;
+    const dolar = Number(resposta.USDBRL.high);
     console.log(`Um Dolar equivale aproximadamente ${dolar.toFixed(2)} reais`);
   } catch (error) {
     console.log(error);
