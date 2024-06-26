@@ -17,5 +17,7 @@
     "name": "Rony Wesley",
     "cidade": "Ottery St. Catchpole",
     "pais": "UK"
-  }
+  },
+  { "id": 5, "name": "MAri Mohr", "cidade": "Joinville", "pais": "Brasil" },
+  { "id": 6, "name": "Yuri Santos", "cidade": "Belizonte", "pais": "Brasil" }
 ]

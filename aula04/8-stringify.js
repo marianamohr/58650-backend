@@ -6,12 +6,14 @@ const operacoesAsync = async () => {
     const resultadoParsed = JSON.parse(resultado);
 
     const newUser = {
-      id: 4,
-      name: "Rony Wesley",
-      cidade: "Ottery St. Catchpole",
-      pais: "UK",
+      id: 6,
+      name: "Yuri Santos",
+      cidade: "Belizonte",
+      pais: "Brasil",
     };
+
     resultadoParsed.push(newUser);
+    console.log(resultadoParsed)
 
     const dataToSave = JSON.stringify(resultadoParsed);
 
