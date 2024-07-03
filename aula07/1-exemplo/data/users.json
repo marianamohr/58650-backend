@@ -1,9 +1,1 @@
-[
-  {
-    "id": 1,
-    "name": "Mari",
-    "sobrenome": "Mohr",
-    "idade": 34,
-    "curso": "Backend"
-  }
-]
+[{"name":"Lucas","sobrenome":"Prado","idade":24,"curso":"Backend","id":1},{"name":"Lucas","sobrenome":"Prado","idade":24,"curso":"Backend","id":2},{"name":"Lucas","sobrenome":"Prado","idade":24,"curso":"Backend","id":3},{"name":"Lucas","sobrenome":"Prado","idade":24,"curso":"Backend","id":4},{"name":"Lucas","sobrenome":"Prado","idade":24,"curso":"Backend","id":5}]
