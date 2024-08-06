@@ -35,7 +35,7 @@ router.get("/listProducts", (req, res) => {
   res.render("products", { user, isAdmin: user.role === "admin", food });
 });
 
-router.get("/:name/:lastName", (req, res) => {
+router.get("/name", (req, res) => {
   const {name, lastName} = req.params
   const user = { name, lastName, role: "admin" };
   res.render("index", user);

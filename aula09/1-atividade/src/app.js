@@ -13,11 +13,11 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", pathView);
 
-app.use("/views", viewRouter)
+app.use("/", viewRouter)
 app.use("/user", userRouter)
 
-app.get("/hello", (req, res) => {
-  return res.status(200).json({ message: "Hello" });
-});
+//app.get("/hello", (req, res) => {
+ // return res.status(200).json({ message: "Hello" });
+//});
 
 module.exports = app;
