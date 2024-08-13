@@ -1,0 +1,26 @@
+ <h1>Lista de Usuários</h1>
+  <ul>
+    {{#each users}}
+     <div id="list"> 
+        <li>{{first_name}} {{last_name}} {{email}}</li>
+       
+     </div>
+    {{/each}}
+    <p>{{result.hasNextPage}}</p>
+  </ul>
+
+    <button id="previous">Previous</button>
+
+    <button id="next">Next</button>
+
+  
+  <script>
+    const nextButton =  document.getElementById('next');
+    const previousButton =  document.getElementById('previous');
+    nextButton.addEventListener('click', () => {
+      if({{result.hasNextPage}}){
+        window.location.href = `http://localhost:3000/list/cami/${{{result.nextPage}}}/2`;
+      }
+    });
+  
+  </script>
