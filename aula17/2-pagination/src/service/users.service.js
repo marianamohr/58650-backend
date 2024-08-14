@@ -19,7 +19,7 @@ const getAll = async () => {
     };
 
     const result = await userModel.paginate({}, options);
-    return result.docs;
+    return result;
   } catch (error) {
     console.error("Erro ao paginar:", error);
   }

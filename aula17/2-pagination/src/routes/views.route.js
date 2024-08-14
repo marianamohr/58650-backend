@@ -8,14 +8,20 @@ router.get("/", (req, res) => {
 
 router.get("/list/:nome/:page/:limit", async (req, res) => {
   const {nome, page, limit} = req.params;
- 
-  let result = await userService.getUsers(nome, page, limit)
+  console.log(nome, page, limit)
+  let result
+  if (nome ==='all') {
+    result = await userService.getAll()
+  } else{
+     result = await userService.getUsers(nome, page, limit)
+  }
 
   // faz a conversão para JSON para que o handlebars consiga renderizar
   // https://github.com/handlebars-lang/handlebars.js/issues/1642
+  console.log(result)
   const users = result.docs.map((user) => user.toJSON());
   delete result.docs
-  console.log(result)
+  // console.log(result)
   res.render("list", { users, result});
 });
 
