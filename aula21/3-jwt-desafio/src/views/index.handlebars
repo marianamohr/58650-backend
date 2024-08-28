@@ -1,0 +1,25 @@
+<nav>
+    <a href="/">Home</a>
+    <a href="/register">Register</a>
+    <button id="list">User list</button>
+   {{!--  <a href="/list">User list</a> --}}
+
+  </nav>
+<div>
+  <h1>Bem vindos! {{token}}</h1>
+</div>
+
+<script>
+  const button = document.getElementById("list")
+
+   button.addEventListener('click', async () => {
+    console.log("Aqui")
+     const response = await fetch(`/list`, {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${{{token}}}`
+        },
+      });
+    });
+</script>
