@@ -42,15 +42,19 @@
     chatBox.addEventListener('keyup', (e) => {
         console.log("keyup", e.key);
         if (e.key === 'Enter') {
-            if (chatBox.value.trim().length > 0) {
+            const message = chatBox.value.trim();
+            if (message.length > 0) {
 
-                console.log("enviando mensagem", chatBox.value);
-                socket.emit('message', { user: user, message: chatBox.value });
+                console.log("enviando mensagem", message);
+                socket.emit('message', { user: user, message: message, to: "mari"});
                 chatBox.value = '';
             }
         }
     });
     
+    //socket.on(user, (data) =>{
+     //   console.log(data)
+   // })
     socket.on('messageLogs', (data) => {
         console.log("recebendo mensagem", data);
         let logs = document.getElementById('messageLogs');

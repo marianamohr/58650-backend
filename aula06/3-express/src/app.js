@@ -19,8 +19,15 @@ const fakeUsers = [
   },
 ];
 
+const conversor = (id) => {
+  return +id
+}
+
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+
 app.get("/saldar", (req, res) => {
+  console.log(req.body)
   res.send("Olá pessoal, agora no express!!");
 });
 
@@ -46,10 +53,11 @@ app.get("/usuarios", (req, res) => {
   res.status(200).json(fakeUsers);
 });
 
-app.get("/usuarios/:id", (req, res) => {
+app.get("/usuarios/:id/:id2", (req, res) => {
   const { id } = req.params;
-  console.log(typeof id)
-  const foundUser = fakeUsers.find((user) => user.id === +id);
+  const numberId = conversor(id)
+  console.log(req.params)
+  const foundUser = fakeUsers.find((user) => user.id === numberId);
 
   if (foundUser) {
     return res.status(200).json(foundUser)

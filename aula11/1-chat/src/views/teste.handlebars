@@ -8,17 +8,19 @@
 
 <script>
     const socket = io();
-
+    let user;
         
-        Swal.fire({
-  icon: "error",
-  title: "Oops...",
-  text: "Something went wrong!",
-  footer: '<a href="#">Why do I have this issue?</a>'
-});
-
-
- 
-   
+  Swal.fire({
+        title: "Identificar",
+        input: "text",
+        text: "Digite seu nome!",
+        inputValidator: (value) => {
+            return !value && "Você precisa escrever seu nome!";
+        },
+        allowOutsideClick: false,
+    }).then((result) => {
+        user = result.value;
+        console.log(user)
+    });
 
 </script>

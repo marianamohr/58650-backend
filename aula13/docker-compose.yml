@@ -15,3 +15,5 @@ services:
 volumes:
   mongodb-data:
     driver: local
+
+#mongodb://root:example@localhost:27017

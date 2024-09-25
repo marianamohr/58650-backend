@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const staticPath = path.join(`${__dirname}/public`);
-console.log(staticPath)
+console.log(staticPath);
 app.use("/static", express.static(staticPath));
 
 app.use("/", viewsRouter);
@@ -31,14 +31,15 @@ io.on("connection", (socket) => {
   socket.emit("messages", {});
 
   socket.on("userName", function (data) {
-    console.log(data)
-    socket.broadcast.emit('userConnected', data);
+    console.log(data);
+    socket.broadcast.emit("userConnected", data);
   });
 
   socket.on("message", function (data) {
     console.log(data);
     messages.push(data);
-    io.sockets.emit("messageLogs",messages);
+    // io.emit(data.to, data.message)
+    io.sockets.emit("messageLogs", messages);
   });
 });
 

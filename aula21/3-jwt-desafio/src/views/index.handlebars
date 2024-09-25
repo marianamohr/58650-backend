@@ -1,25 +1,36 @@
 <nav>
-    <a href="/">Home</a>
-    <a href="/register">Register</a>
-    <button id="list">User list</button>
-   {{!--  <a href="/list">User list</a> --}}
+  <a href="/">Home</a>
+  <a href="/register">Register</a>
+  <button id="list">User list</button>
+  {{!--  <a href="/list">User list</a> --}}
+</nav>
 
-  </nav>
 <div>
   <h1>Bem vindos! {{token}}</h1>
 </div>
 
 <script>
-  const button = document.getElementById("list")
+  // Supondo que `token` seja passado como uma variável de contexto pelo template engine
+  const token = "{{token}}"; // Certifique-se de usar as chaves corretas para interpolação
 
-   button.addEventListener('click', async () => {
-    console.log("Aqui")
-     const response = await fetch(`/list`, {
-        method: 'get',
+  const button = document.getElementById("list");
+
+  button.addEventListener('click', async () => {
+    console.log("Aqui");
+    try {
+      const response = await fetch(`/list`, {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${{{token}}}`
+          'Authorization': `Bearer ${token}`
         },
       });
-    });
+
+      if (!response.ok) {
+        throw new Error('Erro na requisição');
+      }
+    } catch (error) {
+      console.error('Erro ao fazer fetch:', error);
+    }
+  });
 </script>
