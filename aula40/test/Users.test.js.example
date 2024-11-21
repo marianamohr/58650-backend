@@ -1,0 +1,70 @@
+import mongoose from "mongoose";
+import User from "../src/dao/Users.dao.js";
+import assert from "assert";
+import userModel from "../src/dao/models/User.js";
+
+before(async () => {
+  try {
+    await mongoose.connect(
+      `mongodb+srv://marianamohr:c9zKW4F8Vadmdn5d@cluster0.zm7bida.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+    );
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
+});
+
+after(async () => {
+  await mongoose.disconnect();
+  console.log("Disconnected from MongoDB");
+});
+
+describe("Users", () => {
+  let userDao;
+  before(async () => {
+    userDao = new User();
+  });
+  beforeEach(function () {
+    this.timeout(5000);
+  });
+  /*
+  describe("get", () => {
+    it("dao deve retornar os usuarios em um array", async () => {
+      const resultado = await userDao.get();
+
+      assert.strictEqual(Array.isArray(resultado), true);
+    });
+  });
+  describe("save", () => {
+    it("Deve adicionar um usuario", async () => {
+      const user = {
+        first_name: "Mari",
+        email: "johnsoe@gmail.com",
+        last_name: "Ramos Mohr",
+        password: "sdfsdfsafbdbdagd",
+      };
+      const resultado = await userDao.save(user);
+      assert.ok(resultado._id);
+    });
+  });
+*/
+  describe("update", () => {
+    it("update com sucesso", async () => {
+      const users = await userDao.get();
+      const id = users[0]._id;
+      const newUser = {
+        _id: users[0]._id,
+        first_name: "Lucas",
+        last_name: "Prado",
+        email: "lucas@gmail.com",
+        password:
+          "$2b$10$RL3BZd5SOKAY1nHZ3G8x4.HNieau2sDtC1E6hmIrOT4t.bWYWHzm.",
+        role: "user",
+      };
+      console.log(users[0]._id, users[0], newUser);
+      const userUpdated = await userDao.update(id, newUser);
+      console.log(userUpdated);
+      assert.notEqual(users[0].first_name, userUpdated.first_name);
+    });
+  });
+});
